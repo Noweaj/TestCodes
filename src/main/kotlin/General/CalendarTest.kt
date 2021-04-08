@@ -38,11 +38,22 @@ fun main(){
 //    cal.set(Calendar.DAY_OF_MONTH, 12)
 //    println(cal.timeInMillis)
 
-    cal.set(Calendar.DAY_OF_MONTH, 3)
-    val before = cal.timeInMillis
-    cal.set(Calendar.DAY_OF_MONTH, 6)
-    val after = cal.timeInMillis
+//    cal.set(Calendar.DAY_OF_MONTH, 3)
+//    val before = cal.timeInMillis
+//    cal.set(Calendar.DAY_OF_MONTH, 6)
+//    val after = cal.timeInMillis
+//
+//    println((after-before)/(24*3600000L))
 
-    println((after-before)/(24*3600000L))
+    // DAY_OF_WEEK gives Monday, Tuesday, etc...
+    // DATE and DAY_OF_MONTH gives actual day of the month, 1st, 2nd, 30th, 31st, etc...
+
+    cal.firstDayOfWeek = Calendar.MONDAY
+    cal.set(Calendar.DAY_OF_WEEK, cal.firstDayOfWeek)
+    val timeMonday = cal.timeInMillis
+    cal.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY)
+    val timeWednesday = cal.timeInMillis
+
+    println((timeWednesday - timeMonday)/(24*3600000L))
 
 }
