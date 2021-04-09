@@ -63,7 +63,28 @@ fun test(): Boolean{
     )
 
     println("Result: ${result.pass} / ${result.msg}")
+    println(getMinMaxData(
+        morningEntities, lunchEntities, dinnerEntities
+    ))
     return result.pass
+}
+
+private fun getMinMaxData(
+    morningEntities: ArrayList<EventEntity>,
+    lunchEntities: ArrayList<EventEntity>,
+    dinnerEntities: ArrayList<EventEntity>
+){
+    val minMorning = morningEntities.stream().filter {
+        it.value > 0
+    }.min{ o1, o2 ->
+        o1.value - o2.value
+    }
+    val maxMorning = morningEntities.stream().filter {
+        it.value > 0
+    }.max{ o1, o2 ->
+        o1.value - o2.value
+    }
+    println("${minMorning.get().value}, ${maxMorning.get().value}")
 }
 
 fun generateEventEntities(answerList: ArrayList<EventEntity>): ArrayList<EventEntity> {

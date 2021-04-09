@@ -210,13 +210,18 @@ class TimestampStack {
         var max = 0
 
         val NOW = cal.timeInMillis
+
+
+        cal.firstDayOfWeek = firstDayOfWeek
+        cal.set(Calendar.DAY_OF_WEEK, cal.firstDayOfWeek)
+        val THISWEEK_FIRSTDAY = cal.timeInMillis
+
         cal.timeInMillis = cal.timeInMillis-(24*7*3600000L)
 
         cal.set(Calendar.HOUR_OF_DAY, 1)
         cal.set(Calendar.MINUTE, 1)
         cal.set(Calendar.MILLISECOND, 1)
 
-        cal.firstDayOfWeek = firstDayOfWeek
         cal.set(Calendar.DAY_OF_WEEK, cal.firstDayOfWeek)
         val LASTWEEK_FIRSTDAY = cal.timeInMillis
         val LASTWEEK_DAY_OF_MONTH = cal.get(Calendar.DAY_OF_MONTH)
