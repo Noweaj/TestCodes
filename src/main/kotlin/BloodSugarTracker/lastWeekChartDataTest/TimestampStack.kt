@@ -540,6 +540,16 @@ class TimestampStack {
         lunchEntities.add(eventStack.pop())
         morningEntities.add(eventStack.pop())
 
+        for(i in 0 until 7-morningEntities.size){
+            cal.timeInMillis = morningEntities[morningEntities.size-1].timestamp + 24*3600000L
+            cal.set(Calendar.HOUR_OF_DAY, 11)
+            morningEntities.add(EventEntity(cal.timeInMillis, "general", 0))
+            cal.set(Calendar.HOUR_OF_DAY, 13)
+            lunchEntities.add(EventEntity(cal.timeInMillis, "meal", 0))
+            cal.set(Calendar.HOUR_OF_DAY, 19)
+            dinnerEntities.add(EventEntity(cal.timeInMillis, "meal", 0))
+        }
+
         println("morning")
         for(i in morningEntities.indices){
             val calendar = Calendar.getInstance().clone() as Calendar

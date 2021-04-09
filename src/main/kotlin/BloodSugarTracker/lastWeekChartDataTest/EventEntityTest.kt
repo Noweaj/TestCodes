@@ -79,7 +79,7 @@ fun generateEventEntities(answerList: ArrayList<EventEntity>): ArrayList<EventEn
     var currentHour = cal.get(Calendar.HOUR_OF_DAY)
 //    var maxEntity: EventEntity? = null
 
-    for(i in 0 until 10){
+    for(i in 0 until 7){
         var maxEntity: EventEntity?
         // morning (< 12)
         // set to morning time
