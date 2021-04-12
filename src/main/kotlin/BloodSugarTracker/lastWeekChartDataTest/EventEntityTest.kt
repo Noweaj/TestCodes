@@ -1,9 +1,10 @@
 package BloodSugarTracker.lastWeekChartDataTest
 
+import java.time.DayOfWeek
 import java.util.*
 
 fun main(){
-    val flag = false
+    val flag = true
 
     if(flag){
         test()
@@ -23,6 +24,39 @@ fun main(){
 fun test(): Boolean{
     val answerList = ArrayList<EventEntity>()
     val eventEntities = generateEventEntities(answerList)
+
+    // separate test
+    val lastWeek = mutableListOf<EventEntity>()
+    val thisWeek = mutableListOf<EventEntity>()
+    for(i in eventEntities.indices){
+        val newCal = Calendar.getInstance().clone() as Calendar
+        newCal.timeInMillis = eventEntities[i].timestamp
+        println("$i ${newCal.time}")
+        val cal = Calendar.getInstance().clone() as Calendar
+        cal.firstDayOfWeek = Calendar.MONDAY
+        cal.set(Calendar.DAY_OF_WEEK, cal.firstDayOfWeek)
+        cal.set(Calendar.HOUR_OF_DAY, 0)
+        cal.set(Calendar.MINUTE, 0)
+        cal.set(Calendar.SECOND, 0)
+        cal.set(Calendar.MILLISECOND, 0)
+        if(eventEntities[i].timestamp >= cal.timeInMillis){
+            println("thisWeek")
+            thisWeek.add(eventEntities[i])
+        } else {
+            println("lastWeek")
+            lastWeek.add(eventEntities[i])
+        }
+    }
+    for(i in thisWeek.indices){
+        val cal = Calendar.getInstance().clone() as Calendar
+        cal.timeInMillis = thisWeek[i].timestamp
+        println("$i ${cal.time} ${thisWeek[i].value}")
+    }
+    for(i in lastWeek.indices){
+        val cal = Calendar.getInstance().clone() as Calendar
+        cal.timeInMillis = lastWeek[i].timestamp
+        println("$i ${cal.time} ${lastWeek[i].value}")
+    }
 
     for(i in eventEntities.indices){
         val cal  = Calendar.getInstance().clone() as Calendar
