@@ -94,6 +94,9 @@ class Chart3Algorithm{
         }
 
         lowest.addAll(ArrayList(lowestMap.values))
+//        lowest.sortWith(Comparator { o1, o2 ->
+//            (o1.timestamp - o2.timestamp).toInt()
+//        })
         highest.addAll(ArrayList(highestMap.values))
     }
 
