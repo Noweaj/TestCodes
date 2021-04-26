@@ -34,8 +34,10 @@ class GlucoseUtil {
 //        val lunchDiff = ArrayList<Int>()
 //        val dinnerDiff = ArrayList<Int>()
 
-        val diffValues = ArrayList<Int>()
-        getGlucoseDiffValues(eventEntities, diffValues)
+        val spikeEntities = ArrayList<EventEntity>()
+        getGlucoseDiffValues(eventEntities, spikeEntities, false)
+
+        println(spikeEntities)
     }
 
     fun organizeValues(
@@ -58,9 +60,11 @@ class GlucoseUtil {
 
     fun getGlucoseDiffValues(
         eventEntities: ArrayList<EventEntity>,
-        diffValues: ArrayList<Int>
+        spikeEntities: ArrayList<EventEntity>,
+        isDiabetic: Boolean
     ){
         val eventStack = Stack<EventEntity>()
+        var cnt = 0
         for(event in eventEntities){
             if(eventStack.isEmpty()){
                 eventStack.push(event)
@@ -76,17 +80,44 @@ class GlucoseUtil {
             } else {
                 // new day or new type
                 if(eventStack.size > 1){ // has more than 2 entities
+                    cnt++
                     val poppedEntities = ArrayList<EventEntity>()
                     // get glucose spike for current instance
+                    var minEntity = peekedEntity
+                    var maxEntity = peekedEntity
                     while(eventStack.isNotEmpty()){
-                        poppedEntities.add(eventStack.pop())
+                        val poppedEntity = eventStack.pop()
+                        if(poppedEntity.value > maxEntity.value){
+                            maxEntity = poppedEntity
+                        }
+                        if(poppedEntity.value < minEntity.value){
+                            minEntity = poppedEntity
+                        }
+                        poppedEntities.add(poppedEntity)
                     }
+
+                    if(maxEntity.value > 150){
+                        // suspicion of glucose spike
+                        if(maxEntity.value > 175){
+                            // glucose spike!
+                            spikeEntities.add(maxEntity)
+                        }
+                    }
+
+
+
+
+
+                    // curve fitting
+                    // get equation of data points
+                    // get derivative
                 } else { // only 1 entity. not enough information.
                     eventStack.clear()
                     eventStack.push(event)
                 }
             }
         }
+        println(cnt)
     }
 
     /**
