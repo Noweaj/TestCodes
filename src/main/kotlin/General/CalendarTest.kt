@@ -6,6 +6,9 @@ import java.util.*
 fun main(){
     val cal  = Calendar.getInstance().clone() as Calendar
 
+    println(cal.timeInMillis)
+    println(Calendar.getInstance().timeInMillis)
+
 //    val data = arrayOf(
 //            EventEntity(1617098581001, "meal", 141),
 //            EventEntity(1617102181001, "meal", 117),
