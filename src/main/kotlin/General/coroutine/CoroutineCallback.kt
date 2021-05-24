@@ -28,12 +28,14 @@ suspend fun runCoroutine(): List<String>{
         }
     }
 
-    gScope.launch(Dispatchers.IO) {
+    val job = gScope.launch(Dispatchers.IO) {
         (0..100).forEach{
             callback.onReceive("message: $it")
             delay(100)
         }
     }
+
+    job.join()
 
     return myList
 }
