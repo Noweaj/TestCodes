@@ -21,4 +21,15 @@ fun main(){
     string?.let {
         println("not null")
     }?: println("null")
+
+    val testclass = testClass("asdf")
+    println(testclass.hashCode())
+}
+
+data class testClass(
+    val test: String
+){
+    override fun hashCode(): Int {
+        return super.hashCode()
+    }
 }
