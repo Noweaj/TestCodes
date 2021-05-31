@@ -51,12 +51,50 @@ fun main(){
     // DAY_OF_WEEK gives Monday, Tuesday, etc...
     // DATE and DAY_OF_MONTH gives actual day of the month, 1st, 2nd, 30th, 31st, etc...
 
-    cal.firstDayOfWeek = Calendar.MONDAY
-    cal.set(Calendar.DAY_OF_WEEK, cal.firstDayOfWeek)
-    val timeMonday = cal.timeInMillis
-    cal.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY)
-    val timeWednesday = cal.timeInMillis
+//    cal.firstDayOfWeek = Calendar.MONDAY
+//    cal.set(Calendar.DAY_OF_WEEK, cal.firstDayOfWeek)
+//    val timeMonday = cal.timeInMillis
+//    cal.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY)
+//    val timeWednesday = cal.timeInMillis
+//
+//    println((timeWednesday - timeMonday)/(24*3600000L))
 
-    println((timeWednesday - timeMonday)/(24*3600000L))
+    val timeNow = cal.timeInMillis
+    val startOfDay = getStartOfday(timeNow)
+    val endOfDay = getEndOfDay(timeNow)
 
+    cal.timeInMillis = startOfDay
+    println(cal.timeInMillis)
+    println(cal.time)
+
+    cal.timeInMillis = endOfDay
+    println(cal.timeInMillis)
+    println(cal.time)
+
+
+}
+
+private fun getStartOfday(time: Long): Long {
+    val cal = Calendar.getInstance().clone() as Calendar
+    cal.timeInMillis = time
+    with(cal){
+        set(Calendar.HOUR_OF_DAY, 0)
+        set(Calendar.MINUTE, 0)
+        set(Calendar.SECOND, 0)
+        set(Calendar.MILLISECOND, 0)
+    }
+    return cal.timeInMillis
+}
+
+private fun getEndOfDay(time: Long): Long {
+    val cal = Calendar.getInstance().clone() as Calendar
+    cal.timeInMillis = time
+    with(cal){
+        set(Calendar.DAY_OF_MONTH, cal.get(Calendar.DAY_OF_MONTH)+1)
+        set(Calendar.HOUR_OF_DAY, 0)
+        set(Calendar.MINUTE, 0)
+        set(Calendar.SECOND, 0)
+        set(Calendar.MILLISECOND, 0)
+    }
+    return cal.timeInMillis-1
 }
