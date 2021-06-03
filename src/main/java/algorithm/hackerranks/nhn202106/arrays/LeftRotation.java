@@ -1,14 +1,13 @@
 package algorithm.hackerranks.nhn202106.arrays;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Arrays_LeftRotation {
+public class LeftRotation {
 
     public static void main(String[] args) {
-        new Arrays_LeftRotation().solve();
+        new LeftRotation().solve();
     }
 
     private void solve() {
