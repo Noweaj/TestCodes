@@ -1,7 +1,6 @@
-package algorithm.hackerranks.nhn202106.warmup;
+package algorithm.nhn202106.hackerranks.warmup;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Array_SalesByMatch {

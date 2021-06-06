@@ -1,4 +1,4 @@
-package algorithm.hackerranks.nhn202106.warmup;
+package algorithm.nhn202106.hackerranks.warmup;
 
 public class String_RepeatedString {
 

@@ -1,9 +1,6 @@
-package algorithm.hackerranks.nhn202106.arrays;
+package algorithm.nhn202106.hackerranks.arrays;
 
-import algorithm.util.Constants;
-import algorithm.util.DataFileReader;
-
-import java.io.File;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,21 +14,21 @@ public class NewYearChaos {
      * Use Bubble Sort
      */
     private void solve() {
-//        getMinimumBribes(Arrays.asList(2,1,5,3,4)); // answer: 3
-//        getMinimumBribes(Arrays.asList(2,5,1,3,4)); // Too chaotic
-//        getMinimumBribes(Arrays.asList(5,1,2,3,7,8,6,4)); // Too chaotic
-//        getMinimumBribes(Arrays.asList(1,2,5,3,7,8,6,4)); // 7
-//        getMinimumBribes(Arrays.asList(1,2,5,3,4,7,8,6)); // 4
+        getMinimumBribes(Arrays.asList(2,1,5,3,4)); // answer: 3
+        getMinimumBribes(Arrays.asList(2,5,1,3,4)); // Too chaotic
+        getMinimumBribes(Arrays.asList(5,1,2,3,7,8,6,4)); // Too chaotic
+        getMinimumBribes(Arrays.asList(1,2,5,3,7,8,6,4)); // 7
+        getMinimumBribes(Arrays.asList(1,2,5,3,4,7,8,6)); // 4
 
-        List<String> data = DataFileReader.ReadFileToList(
-                new File(Constants.PROJECT_DIR
-                        + Constants.ALGORITHM_SUB_DIR
-                        + "\\hackerranks\\nhn202106\\arrays\\data\\NewYearChaosData.txt"));
-        int dataCnt = Integer.parseInt(data.get(0));
-
-        for(int i=0; i<dataCnt; i++){
-
-        }
+//        List<String> data = DataFileReader.ReadFileToList(
+//                new File(Constants.PROJECT_DIR
+//                        + Constants.ALGORITHM_SUB_DIR
+//                        + "\\hackerranks\\nhn202106\\arrays\\data\\NewYearChaosData.txt"));
+//        int dataCnt = Integer.parseInt(data.get(0));
+//
+//        for(int i=0; i<dataCnt; i++){
+//
+//        }
     }
 
     private String getMinimumBribes(List<Integer> q){

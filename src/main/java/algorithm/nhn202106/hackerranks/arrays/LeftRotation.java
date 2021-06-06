@@ -1,4 +1,4 @@
-package algorithm.hackerranks.nhn202106.arrays;
+package algorithm.nhn202106.hackerranks.arrays;
 
 import java.util.Arrays;
 import java.util.LinkedList;
