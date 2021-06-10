@@ -2,7 +2,7 @@ package rxJava.chapter3.section4_reduce;
 
 import io.reactivex.Maybe;
 import io.reactivex.Observable;
-import javafx.util.Pair;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,14 +17,14 @@ public class subsection1_dataQuery {
 
     private void solve() {
         List<Pair<String, Integer>> sales = new ArrayList<>();
-        sales.add(new Pair<>("TV", 2500));
-        sales.add(new Pair<>("Camera", 300));
-        sales.add(new Pair<>("TV", 1600));
-        sales.add(new Pair<>("Phone", 800));
+        sales.add(Pair.of("TV", 2500));
+        sales.add(Pair.of("Camera", 300));
+        sales.add(Pair.of("TV", 1600));
+        sales.add(Pair.of("Phone", 800));
 
         Maybe<Integer> tvSales = Observable.fromIterable(sales)
-                .filter(sale -> sale.getKey().equals("TV"))
-                .map(sale -> sale.getValue())
+                .filter(sale -> sale.getLeft().equals("TV"))
+                .map(sale -> sale.getRight())
                 .reduce((val1, val2) -> val1+val2);
         tvSales.subscribe(util.PrintUtil::println);
     }
