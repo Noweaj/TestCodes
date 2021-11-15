@@ -1,9 +1,7 @@
-package algorithm.amazon202111.programmers;
+package algorithm.amazon202111.programmers.hash;
 
 import util.CheckUtil;
 import util.InputSet;
-
-import java.util.HashSet;
 
 public class Hash_Disguise {
     public static void main(String[] args){
@@ -31,19 +29,8 @@ public class Hash_Disguise {
     }
 
     private int solve(String[][] clothes){
-        HashSet<String> mSet = new HashSet<>();
-        int cnt = 0;
-        for(int i=0; i<clothes.length; i++){
-            mSet.clear();
-            mSet.add(clothes[i][1]);
-            cnt++;
-            for(int j=i+1; j<clothes.length; j++){
-                if(!mSet.contains(clothes[j][1])){
-                    mSet.add(clothes[j][1]);
-                    cnt++;
-                }
-            }
-        }
-        return cnt;
+
+
+        return 0;
     }
 }

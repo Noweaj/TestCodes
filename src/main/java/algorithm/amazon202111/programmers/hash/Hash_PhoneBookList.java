@@ -1,9 +1,7 @@
-package algorithm.amazon202111.programmers;
+package algorithm.amazon202111.programmers.hash;
 
 import util.CheckUtil;
-import util.CheckUtil.*;
 import util.InputSet;
-import util.PrintUtil;
 
 import java.util.*;
 
