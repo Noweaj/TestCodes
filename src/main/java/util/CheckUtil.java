@@ -23,6 +23,20 @@ public class CheckUtil<T> {
         return input.equals(answer);
     }
 
+    public boolean checkAnswerArr(int[] input, int[] answer){
+        PrintUtil.println("input :"+Arrays.toString(input));
+        PrintUtil.println("answer:"+Arrays.toString(answer));
+        if(input == null || answer == null) return false;
+        if(input.length != answer.length) return false;
+
+        for(int i=0; i<input.length; i++){
+            if(input[i] != answer[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void checkAnswerIntegerArray(InputSet<Integer[]>[] input){
 
     }
